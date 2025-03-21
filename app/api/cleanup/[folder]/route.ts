@@ -1,9 +1,8 @@
 // app/api/blob/cleanup/route.ts
 import { NextResponse } from 'next/server';
 import { list, del } from '@vercel/blob';
-import { NextApiRequest } from 'next';
 
-export async function DELETE(request: NextApiRequest, context: any) {
+export async function DELETE(request: Request, context: any) {
   const { params } = context;
   const { folder } = params;
 
