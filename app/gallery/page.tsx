@@ -14,59 +14,76 @@ export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const playedOnce = useRef(false);
+  const isPlaying = useRef(false);
+  const lastPlayedFolders = useRef<string[]>([]);
 
-  useEffect(() => {
-    const fetchFiles = async () => {
-        const res = await fetch("/api/filelist");
-        const data = await res.json();
-        const newFolders = data.slice(0, 3);
-        const same = JSON.stringify(newFolders) === JSON.stringify(folders);
-        if (!same) setFolders(newFolders);
-      };      
+  const fetchFiles = async () => {
+    const res = await fetch("/api/filelist");
+    const data: FolderFiles[] = await res.json();
+    const newFolders = data.slice(0, 3);
+    const newFolderNames = newFolders.map(f => f.folder);
 
-    fetchFiles();
-    const interval = setInterval(fetchFiles, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    const hasChanged = JSON.stringify(newFolderNames) !== JSON.stringify(lastPlayedFolders.current);
 
-  const playNextAudio = (index: number) => {
-    if (folders.length === 0) return;
-  
-    const nextIndex = index % folders.length;
-    const nextAudio = folders[nextIndex]?.audio;
-  
-    if (nextAudio) {
-      const audio = new Audio(nextAudio);
-      audioRef.current = audio;
-  
-      audio.addEventListener("canplaythrough", () => {
-        audio.play();
-      });
-  
-      audio.addEventListener("ended", () => {
-        setTimeout(() => {
-          playNextAudio((nextIndex + 1) % folders.length);
-        }, 2000);
-      });
-  
-      setCurrentIndex(nextIndex);
+    if (hasChanged) {
+      lastPlayedFolders.current = newFolderNames;
+      setFolders(newFolders);
+
+      // If we're in the middle of playback, update the current audio to match the new list
+      if (isPlaying.current && audioRef.current && newFolders[currentIndex]) {
+        const nextAudio = newFolders[currentIndex].audio;
+        const audio = audioRef.current;
+        audio.pause();
+        audio.src = nextAudio;
+        audio.load();
+        audio.addEventListener("canplaythrough", () => {
+          audio.play();
+        }, { once: true });
+      }
     }
   };
-  
 
   useEffect(() => {
-    if (!audioRef.current) return;
+    fetchFiles();
+  }, []);
 
-    const handleEnded = () => {
-      setTimeout(() => {
-        playNextAudio((currentIndex + 1) % folders.length);
-      }, 2000);
-    };
+  const playNextAudio = async (index: number) => {
+    if (folders.length === 0) return;
 
-    const audio = audioRef.current;
-    audio.addEventListener("ended", handleEnded);
-    return () => audio.removeEventListener("ended", handleEnded);
-  }, [folders, currentIndex]);
+    const nextIndex = index % folders.length;
+    setCurrentIndex(nextIndex);
+
+    const updatedRes = await fetch("/api/filelist");
+    const updatedData: FolderFiles[] = await updatedRes.json();
+    const updatedFolders = updatedData.slice(0, 3);
+    setFolders(updatedFolders);
+    lastPlayedFolders.current = updatedFolders.map(f => f.folder);
+
+    const nextAudio = updatedFolders[nextIndex]?.audio;
+
+    if (nextAudio) {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.removeAttribute("src");
+        audioRef.current.load();
+      }
+
+      const audio = new Audio(nextAudio);
+      audioRef.current = audio;
+
+      audio.addEventListener("canplaythrough", () => {
+        isPlaying.current = true;
+        audio.play();
+      });
+
+      audio.addEventListener("ended", async () => {
+        isPlaying.current = false;
+        setTimeout(() => {
+          playNextAudio((nextIndex + 1) % updatedFolders.length);
+        }, 2000);
+      });
+    }
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -81,7 +98,7 @@ export default function Gallery() {
   }, [folders, currentIndex]);
 
   if (folders.length === 0) return <div>Loading...</div>;
-  const { originalImage, generatedImage, audio } = folders[currentIndex];
+  const { originalImage, generatedImage } = folders[currentIndex];
 
   return (
     <div
@@ -119,7 +136,6 @@ export default function Gallery() {
             objectFit: 'cover',
           }}
         />
-        <audio ref={audioRef} src={audio} />
       </div>
     </div>
   );
