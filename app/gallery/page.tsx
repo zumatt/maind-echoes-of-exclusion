@@ -16,6 +16,7 @@ export default function Gallery() {
   const playedOnce = useRef(false);
   const isPlaying = useRef(false);
   const lastPlayedFolders = useRef<string[]>([]);
+  const [isOnline, setIsOnline] = useState<boolean>(typeof window !== 'undefined' ? navigator.onLine : true); // Check if in browser
 
   const fetchFiles = async () => {
     const res = await fetch("/api/filelist");
@@ -45,6 +46,20 @@ export default function Gallery() {
 
   useEffect(() => {
     fetchFiles();
+  }, []);
+
+  useEffect(() => {
+    const handleOnlineStatus = () => {
+      setIsOnline(navigator.onLine);
+    };
+
+    window.addEventListener("online", handleOnlineStatus);
+    window.addEventListener("offline", handleOnlineStatus);
+
+    return () => {
+      window.removeEventListener("online", handleOnlineStatus);
+      window.removeEventListener("offline", handleOnlineStatus);
+    };
   }, []);
 
   const playNextAudio = async (index: number) => {
@@ -111,6 +126,11 @@ export default function Gallery() {
         margin: '0 auto',
       }}
     >
+    {!isOnline && (
+      <div style={{ position: 'absolute', top: 10, right: 10 }}>
+        <img src="public/icon_noConnection.png" alt="No Internet" style={{ width: 24, height: 24 }} />
+      </div>
+    )}
       <div
         style={{
           display: 'flex',
