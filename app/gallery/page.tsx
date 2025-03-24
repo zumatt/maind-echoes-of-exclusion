@@ -70,7 +70,7 @@ export default function Gallery() {
 
     const updatedRes = await fetch("/api/filelist");
     const updatedData: FolderFiles[] = await updatedRes.json();
-    const updatedFolders = updatedData.slice(0, 3);
+    const updatedFolders = updatedData.slice(0, 5);
     setFolders(updatedFolders);
     lastPlayedFolders.current = updatedFolders.map(f => f.folder);
 
@@ -118,12 +118,12 @@ export default function Gallery() {
   return (
     <div
       style={{
-        width: '95vw',
-        height: '95vh',
+        width: '100dvw',
+        height: '100dvh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: '0 auto',
+        margin: '0 auto'
       }}
     >
     {!isOnline && (
@@ -134,8 +134,9 @@ export default function Gallery() {
       <div
         style={{
           display: 'flex',
-          width: '100%',
-          height: '100%',
+          width: '95%',
+          height: '95%',
+          gap: '10px'
         }}
       >
         <img
