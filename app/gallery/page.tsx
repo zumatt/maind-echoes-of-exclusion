@@ -127,8 +127,8 @@ export default function Gallery() {
       }}
     >
     {!isOnline && (
-      <div style={{ position: 'absolute', top: 10, right: 10 }}>
-        <img src="public/icon_noConnection.png" alt="No Internet" style={{ width: 24, height: 24 }} />
+      <div style={{ position: 'absolute', top: 0, right: 0 }}>
+        <img src="icon_noConnection.svg" alt="No Internet" style={{ width: 25, height: 25 }} />
       </div>
     )}
       <div
