@@ -128,7 +128,7 @@ export default function Gallery() {
     >
     {!isOnline && (
       <div style={{ position: 'absolute', top: 10, right: 10 }}>
-        <img src="/icon_noConnection.png" alt="No Internet" style={{ width: 24, height: 24, filter: brightness(0) saturate(100%) invert(18%) sepia(94%) saturate(7470%) hue-rotate(359deg) brightness(91%) contrast(116%) }} />
+        <img src="public/icon_noConnection.png" alt="No Internet" style={{ width: 24, height: 24 }} />
       </div>
     )}
       <div
