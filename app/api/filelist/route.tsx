@@ -29,7 +29,7 @@ export async function GET() {
           : null;
       })
       .filter(Boolean)
-      .sort((a, b) => (a!.folder > b!.folder ? -1 : 1)); // descending order
+      .sort((a, b) => Number(b!.folder) - Number(a!.folder));
 
     return NextResponse.json(folders);
   } catch (error) {

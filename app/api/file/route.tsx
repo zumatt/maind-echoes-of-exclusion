@@ -19,7 +19,7 @@ export async function POST(req: Request){
     // Convert image to WebP format using sharp
     const buffer = await file.arrayBuffer(); // Convert File to ArrayBuffer
     const webpBuffer = await sharp(Buffer.from(buffer))
-        .rotate(0) // Ensure the image is not rotated
+        .rotate()
         .webp()
         .toBuffer();
 

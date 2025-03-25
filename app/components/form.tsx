@@ -203,25 +203,25 @@ return (
                         Selected file / 選択されたファイル: {fileName}
                     </p>
                 )}
-                <button
+                {file && (
+                  <button
                     type="submit"
-                    disabled={!file}
                     style={{
-                        display: 'block',
-                        width: '100%',
-                        padding: '15px',
-                        marginTop: '20px',
-                        fontSize: '1.2em',
-                        backgroundColor: 'white',
-                        color: 'black',
-                        border: 'none',
-                        cursor: file ? 'pointer' : 'not-allowed',
-                        opacity: file ? 1 : 0.5,
-                        borderRadius: '5px'
+                      display: 'block',
+                      width: '100%',
+                      padding: '15px',
+                      marginTop: '20px',
+                      fontSize: '1.2em',
+                      backgroundColor: 'white',
+                      color: 'black',
+                      border: 'none',
+                      cursor: 'pointer',
+                      borderRadius: '5px'
                     }}
-                >
+                  >
                     Upload Image / 画像のアップロード
-                </button>
+                  </button>
+                )}
             </form>
         )}
 
@@ -253,10 +253,10 @@ return (
         {uploaded && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
                 <h1>Thank you for contributing!<br/>ご協力ありがとうございました！</h1>
-                <p>Your image has been successfully uploaded and will soon be displayed in the installation.<br/>While you are waiting, you can explore the <a href="https://maind.supsi.ch/">website of the Master of Arts in Interaction Design SUPSI</a>.</p>
-                <p>画像は正常にアップロードされ、間もなくインスタレーションに表示されます。<br/>お待ちいただいている間、<a href="https://maind.supsi.ch">インタラクションデザインMA SUPSIのウェブサイト。</a>をご覧ください。</p>
+                <p>Your image has been successfully uploaded and will soon be displayed in the installation.<br/>While you are waiting, you can explore the <a style={{ color: 'white' }} href="https://maind.supsi.ch/">website of the Master of Arts in Interaction Design SUPSI</a>.</p>
+                <p>画像は正常にアップロードされ、間もなくインスタレーションに表示されます。<br/>お待ちいただいている間、<a style={{ color: 'white' }}  href="https://maind.supsi.ch">インタラクションデザインMA SUPSIのウェブサイト。</a>をご覧ください。</p>
                 <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
-                    We encourage mindful participation—each generated image consumes energy, so please share thoughtfully. Your engagement matters.<br/>生成された画像はエネルギーを消費するため、思慮深く共有してください。あなたの参加は重要です。
+                Please be aware that every generation consumes energy, so please use this facility responsibly.<br/>すべての世代がエネルギーを消費していることを認識し、責任を持ってこの施設をご利用ください。
                 </p>
             </div>
         )}

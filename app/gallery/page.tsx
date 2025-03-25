@@ -63,50 +63,61 @@ export default function Gallery() {
   }, []);
 
   const playNextAudio = async (index: number) => {
-    if (folders.length === 0) return;
-
-    const nextIndex = index % folders.length;
-    setCurrentIndex(nextIndex);
-
     const updatedRes = await fetch("/api/filelist");
     const updatedData: FolderFiles[] = await updatedRes.json();
     const updatedFolders = updatedData.slice(0, 5);
+    if (updatedFolders.length === 0) return;
+  
+    const updatedFolderNames = updatedFolders.map(f => f.folder);
+    const previousFolderNames = lastPlayedFolders.current;
+  
+    const hasChanged = JSON.stringify(updatedFolderNames) !== JSON.stringify(previousFolderNames);
+  
+    // If the list has changed, restart from the first (index 0)
+    const nextIndex = hasChanged ? 0 : index % updatedFolders.length;
+  
     setFolders(updatedFolders);
-    lastPlayedFolders.current = updatedFolders.map(f => f.folder);
-
-    const nextAudio = updatedFolders[nextIndex]?.audio;
-
+    lastPlayedFolders.current = updatedFolderNames;
+    setCurrentIndex(nextIndex);
+  
+    const nextAudio = updatedFolders[nextIndex].audio;
+  
     if (nextAudio) {
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.removeAttribute("src");
         audioRef.current.load();
       }
-
+  
       const audio = new Audio(nextAudio);
       audioRef.current = audio;
-
+  
       audio.addEventListener("canplaythrough", () => {
         isPlaying.current = true;
         audio.play();
       });
-
+  
       audio.addEventListener("ended", async () => {
         isPlaying.current = false;
+  
         setTimeout(() => {
-          playNextAudio((nextIndex + 1) % updatedFolders.length);
+          // Move to next index or restart if new content is detected
+          playNextAudio(nextIndex + 1);
         }, 2000);
       });
     }
   };
+  
+  
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "p" && !playedOnce.current && folders.length > 0) {
         e.preventDefault();
         playedOnce.current = true;
-        playNextAudio(currentIndex);
+        playNextAudio(0);
       }
+            
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
