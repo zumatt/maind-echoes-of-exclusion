@@ -168,9 +168,8 @@ return (
         {!uploading && !uploaded && (
             <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '400px' }}>
                 <h1>Echoes of Exclusion</h1>
-                <p>
-                    By sharing your image, you contribute to a collective narrative that evolves throughout the festival. Your uploaded photo, its AI-generated transformation, and descriptive text will be part of this experience.
-                </p>
+                <p>By sharing your image, you contribute to a collective narrative that evolves throughout the exposition. Your uploaded photo, its AI-generated transformation, and descriptive text will be part of this experience. Please be aware that the images you upload will be analysed by AI models, be sure you have rights to use the image and that it does not contains any personal or sensible data.</p>
+                <p>あなたの画像を共有することで、博覧会を通して展開される集合的な物語に貢献することができます。あなたがアップロードした写真、AIが生成した変形、説明的なテキストは、この体験の一部となります。アップロードされた画像は、AIモデルによって分析されますので、画像の使用権があること、個人情報や機密情報が含まれていないことをご確認ください。</p>
                 <label htmlFor="imageInput" style={{
                     display: 'block',
                     width: '60%',
@@ -187,7 +186,7 @@ return (
                     opacity: file ? 1 : 0.5,
                     borderRadius: '5px'
                 }}>
-                    Choose an Image
+                    Choose an Image / 画像を選ぶ
                     <input
                         id="imageInput"
                         type="file"
@@ -201,7 +200,7 @@ return (
                 </label>
                 {fileName && (
                     <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
-                        Selected file: {fileName}
+                        Selected file / 選択されたファイル: {fileName}
                     </p>
                 )}
                 <button
@@ -221,16 +220,16 @@ return (
                         borderRadius: '5px'
                     }}
                 >
-                    Upload Image
+                    Upload Image / 画像のアップロード
                 </button>
             </form>
         )}
 
         {uploading && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
-                <h2>Please keep this page open while your image is being processed...</h2>
+                <h2>Please keep this page open while your image is being processed...<br/>画像が処理される間、このページを開いておいてください...</h2>
                 <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
-                    Note that the process will take a few minutes
+                    Note that the process will take a few minutes<br/>このプロセスには数分かかります。
                 </p>
                 <div style={{
                     width: '100%',
@@ -253,10 +252,11 @@ return (
 
         {uploaded && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
-                <h1>Thank you for contributing!</h1>
-                <p>Your image has been successfully uploaded and will soon be displayed in the installation.</p>
+                <h1>Thank you for contributing!<br/>ご協力ありがとうございました！</h1>
+                <p>Your image has been successfully uploaded and will soon be displayed in the installation.<br/>While you are waiting, you can explore the <a href="https://maind.supsi.ch/">website of the Master of Arts in Interaction Design SUPSI</a>.</p>
+                <p>画像は正常にアップロードされ、間もなくインスタレーションに表示されます。<br/>お待ちいただいている間、<a href="https://maind.supsi.ch">インタラクションデザインMA SUPSIのウェブサイト。</a>をご覧ください。</p>
                 <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
-                    We encourage mindful participation—each generated image consumes energy, so please share thoughtfully. Your engagement matters.
+                    We encourage mindful participation—each generated image consumes energy, so please share thoughtfully. Your engagement matters.<br/>生成された画像はエネルギーを消費するため、思慮深く共有してください。あなたの参加は重要です。
                 </p>
             </div>
         )}
