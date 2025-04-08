@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       output_format: 'webp',
       output_quality: 80,
       prompt_strength: 0.8,
-      num_inference_steps: 28,
+      num_inference_steps: 40,
     };
   
     const prediction = await replicate.predictions.create({
