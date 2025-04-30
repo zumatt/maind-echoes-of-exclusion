@@ -7,6 +7,7 @@ interface FolderFiles {
   originalImage: string;
   generatedImage: string;
   audio: string;
+  description: string;
 }
 
 export default function Gallery() {
@@ -123,8 +124,18 @@ export default function Gallery() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [folders, currentIndex]);
 
-  if (folders.length === 0) return <div>Loading...</div>;
-  const { originalImage, generatedImage } = folders[currentIndex];
+  if (folders.length === 0) return (
+    <div>
+      <p>Loading...</p>
+      {!isOnline && (
+        <div style={{ position: 'absolute', top: 0, right: 0 }}>
+          <img src="icon_noConnection.svg" alt="No Internet" style={{ width: 25, height: 25 }} />
+        </div>
+      )}
+    </div>
+  );
+
+  const { originalImage, generatedImage, description } = folders[currentIndex];
 
   return (
     <div
@@ -134,7 +145,8 @@ export default function Gallery() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: '0 auto'
+        margin: '0 auto',
+        flexWrap: 'wrap'
       }}
     >
     {!isOnline && (
@@ -146,7 +158,7 @@ export default function Gallery() {
         style={{
           display: 'flex',
           width: '95%',
-          height: '95%',
+          height: '90%',
           gap: '10px'
         }}
       >
@@ -169,6 +181,15 @@ export default function Gallery() {
           }}
         />
       </div>
+      <p
+          style={{
+            fontFamily: 'Helvetica, sans-serif',
+            fontSize: '12px',
+            color: 'white',
+            width: '95%',
+            textAlign: 'left'
+          }}
+        >{description}</p>
     </div>
   );
 }
