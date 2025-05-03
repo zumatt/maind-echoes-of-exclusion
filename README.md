@@ -70,6 +70,8 @@ You can easily deploy the entire project by clicking on the below's button.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fzumatt%2Fmaind-echoes-of-exclusion&env=REPLICATE_API_TOKEN,BLOB_READ_WRITE_TOKEN&envDescription=API%20Keys%20to%20run%20the%20application.%20Replicate%20to%20generate%20description%2C%20audio%20and%20image%3B%20Vercel%20Blob%20to%20store%20generated%20content.&envLink=https%3A%2F%2Fgithub.com%2Fzumatt%2Fmaind-echoes-of-exclusion&project-name=echoes-of-exclusion-clone&repository-name=echoes-of-exclusion-clone&redirect-url=https%3A%2F%2Fgithub.com%2Fzumatt%2Fmaind-echoes-of-exclusion)
 
+If you are planning to keep the carousel displayed full day, please consider to upgrade Vercel team to plan version to have more advanced operations within Vercel Blob.
+
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 ## Technical documentation
