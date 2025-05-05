@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+const installationOnline = true;
+
 export default function UploadForm() {
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState('');
@@ -165,7 +167,13 @@ return (
         alignItems: 'center',
         height: '100vh',
     }}>
-        {!uploading && !uploaded && (
+        {!installationOnline && (
+            <div style={{ width: '90%', maxWidth: '400px' }}>
+                <h1>Echoes of Exclusion is actually offline.<br/>ご協力ありがとうございました！</h1>
+                <p>The last installation at SwissNex in Osaka ended in May 2025. If you are interested in showing the installation in your spaces please contact the authors via the <a style={{ color: 'white' }} href='https://github.com/zumatt/maind-echoes-of-exclusion/tree/main'>GitHub repository</a></p>
+            </div>
+        )}
+        {installationOnline && !uploading && !uploaded && (
             <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '400px' }}>
                 <h1>Echoes of Exclusion</h1>
                 <p>By sharing your image, you contribute to a collective narrative that evolves throughout the exposition. Your uploaded photo, its AI-generated transformation, and descriptive text will be part of this experience. Please be aware that the images you upload will be analysed by AI models, be sure you have rights to use the image and that it does not contains any personal or sensible data.</p>
@@ -225,7 +233,7 @@ return (
             </form>
         )}
 
-        {uploading && (
+        {installationOnline && uploading && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
                 <h2>Please keep this page open while your image is being processed...<br/>画像が処理される間、このページを開いておいてください...</h2>
                 <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
@@ -250,7 +258,7 @@ return (
             </div>
         )}
 
-        {uploaded && (
+        {installationOnline && uploaded && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
                 <h1>Thank you for contributing!<br/>ご協力ありがとうございました！</h1>
                 <p>Your image has been successfully uploaded and will soon be displayed in the installation.<br/>While you are waiting, you can explore the <a style={{ color: 'white' }} href="https://maind.supsi.ch/">website of the Master of Arts in Interaction Design SUPSI</a>.</p>
