@@ -86,3 +86,11 @@ As previously stated, the project is released under the terms of the [CC BY](htt
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%20SA%204.0-lightgrey.svg
+
+## Acknowledgments
+The project has been developed thanks to the support of the University of Applied Sciences and Arts of Southern Switzerland.
+![SUPSI Logo](documentation/images/supsi-logo.svg)
+<img src="documentation/images/supsi-logo.svg" width="200" />
+The project has been showcased during the 2024 [EXPOSED](https://www.exposed.photography/) festival in Turin at the [Recontemporary club](https://recontemporary.com/en/). 
+
+The project has been part of the temporary exhibition [Synthetic Interaction](https://swissnex.org/japan/event/swissnex-window-5-synthetic-interactions/) at [Swissnex Japan](https://swissnex.org/japan/) during the EXPO 2025 in Osaka.
