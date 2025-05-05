@@ -169,8 +169,9 @@ return (
     }}>
         {!installationOnline && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
-                <h1>Echoes of Exclusion is actually offline.<br/>ご協力ありがとうございました！</h1>
+                <h1>Echoes of Exclusion is actually offline.<br/>Echoes of Exclusion（排除の響き）という名前のインストールは、実際にはオフラインだ。</h1>
                 <p>The last installation at SwissNex in Osaka ended in May 2025. If you are interested in showing the installation in your spaces please contact the authors via the <a style={{ color: 'white' }} href='https://github.com/zumatt/maind-echoes-of-exclusion/tree/main'>GitHub repository</a></p>
+                <p>大阪のスイスネックスでの最後のインスタレーションは2025年5月に終了した。このインスタレーションをあなたのスペースで上映したい方は、<a style={{ color: 'white' }} href='https://github.com/zumatt/maind-echoes-of-exclusion/tree/main'>GitHubリポジトリから作者にご連絡ください。</a></p>
             </div>
         )}
         {installationOnline && !uploading && !uploaded && (
