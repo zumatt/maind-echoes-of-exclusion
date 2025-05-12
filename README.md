@@ -27,8 +27,8 @@ To continue with the installation you will need to download this repository by c
 After you have the repository downloaded locally on your pc, you can continue with the following steps.
 
 First of all you will need to retrieve the API's Tokens for Replicate and Vercel Blob (to save images). 
-To retrieve the Replicate Token you can follow the guidelines at [this link](https://replicate.com). 
-To retrieve the Vercel Blob's one you can follow the guidelines at [this link](https://vercel.com).
+To retrieve the Replicate Token you can follow the guidelines at [this link](https://replicate.com/account/api-tokens). 
+To retrieve the Vercel Blob's one you can follow the guidelines at [this link](https://vercel.com/guides/how-do-i-use-a-vercel-api-access-token).
 
 After you retrieved bot the API's tokens you will need to create a file in the main project's folder called `.env.local` where you will paste both tokens in the file as follows:
 ```
