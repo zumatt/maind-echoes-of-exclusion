@@ -169,16 +169,16 @@ return (
     }}>
         {!installationOnline && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
-                <h1>Echoes of Exclusion is actually offline.<br/>Echoes of Exclusion（排除の響き）という名前のインストールは、実際にはオフラインだ。</h1>
-                <p>The last installation at SwissNex in Osaka ended in May 2025. If you are interested in showing the installation in your spaces please contact the authors via the <a style={{ color: 'white' }} href='https://github.com/zumatt/maind-echoes-of-exclusion/discussions'>GitHub repository</a></p>
-                <p>大阪のスイスネックスでの最後のインスタレーションは2025年5月に終了した。このインスタレーションをあなたのスペースで上映したい方は、<a style={{ color: 'white' }} href='https://github.com/zumatt/maind-echoes-of-exclusion/discussions'>GitHubリポジトリから作者にご連絡ください。</a></p>
+                <h1>Echoes of Exclusion is actually offline.<br/>Echoes of Exclusion è attualmente offline.</h1>
+                <p>The last installation ended. If you are interested in showing the installation in your spaces please contact the authors via the <a style={{ color: 'white' }} href='https://github.com/zumatt/maind-echoes-of-exclusion/discussions'>GitHub repository</a></p>
+                <p>L'ultima installazione è terminata. Se siete interessati a mostrare l'installazione nei vostri spazi, contattate gli autori tramite il <a style={{ color: 'white' }} href='https://github.com/zumatt/maind-echoes-of-exclusion/discussions'>repository Github</a></p>
             </div>
         )}
         {installationOnline && !uploading && !uploaded && (
             <form onSubmit={handleSubmit} style={{ width: '90%', maxWidth: '400px' }}>
                 <h1>Echoes of Exclusion</h1>
                 <p>By sharing your image, you contribute to a collective narrative that evolves throughout the exposition. Your uploaded photo, its AI-generated transformation, and descriptive text will be part of this experience. Please be aware that the images you upload will be analysed by AI models, be sure you have rights to use the image and that it does not contains any personal or sensible data.</p>
-                <p>あなたの画像を共有することで、博覧会を通して展開される集合的な物語に貢献することができます。あなたがアップロードした写真、AIが生成した変形、説明的なテキストは、この体験の一部となります。アップロードされた画像は、AIモデルによって分析されますので、画像の使用権があること、個人情報や機密情報が含まれていないことをご確認ください。</p>
+                <p>Condividendo la tua immagine, contribuisci a una narrazione collettiva che si evolve nel corso dell'esposizione. La foto che hai caricato, la sua trasformazione generata dall'intelligenza artificiale e il testo descrittivo faranno parte di questa esperienza. Ti preghiamo di tenere presente che le immagini che carichi saranno analizzate da modelli di intelligenza artificiale, assicurati di avere i diritti per utilizzare l'immagine e che questa non contenga dati personali o sensibili.</p>
                 <label htmlFor="imageInput" style={{
                     display: 'block',
                     width: '60%',
@@ -195,7 +195,7 @@ return (
                     opacity: file ? 1 : 0.5,
                     borderRadius: '5px'
                 }}>
-                    Choose an Image / 画像を選ぶ
+                    Choose an Image / Scegli un'immagine
                     <input
                         id="imageInput"
                         type="file"
@@ -209,7 +209,7 @@ return (
                 </label>
                 {fileName && (
                     <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
-                        Selected file / 選択されたファイル: {fileName}
+                        Selected file / File selezionato: {fileName}
                     </p>
                 )}
                 {file && (
@@ -228,7 +228,7 @@ return (
                       borderRadius: '5px'
                     }}
                   >
-                    Upload Image / 画像のアップロード
+                    Upload Image / Carica immagine
                   </button>
                 )}
             </form>
@@ -236,9 +236,9 @@ return (
 
         {installationOnline && uploading && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
-                <h2>Please keep this page open while your image is being processed...<br/>画像が処理される間、このページを開いておいてください...</h2>
+                <h2>Please keep this page open while your image is being processed...<br/>Mantieni aperta questa pagina mentre l'immagine viene elaborata...</h2>
                 <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
-                    Note that the process will take a few minutes<br/>このプロセスには数分かかります。
+                    Note that the process will take a few minutes<br/>Questo processo richiederà alcuni minuti.
                 </p>
                 <div style={{
                     width: '100%',
@@ -261,11 +261,11 @@ return (
 
         {installationOnline && uploaded && (
             <div style={{ width: '90%', maxWidth: '400px' }}>
-                <h1>Thank you for contributing!<br/>ご協力ありがとうございました！</h1>
+                <h1>Thank you for contributing!<br/>Grazie per il tuo contributo!</h1>
                 <p>Your image has been successfully uploaded and will soon be displayed in the installation.<br/>While you are waiting, you can explore the <a style={{ color: 'white' }} href="https://maind.supsi.ch/">website of the Master of Arts in Interaction Design SUPSI</a>.</p>
-                <p>画像は正常にアップロードされ、間もなくインスタレーションに表示されます。<br/>お待ちいただいている間、<a style={{ color: 'white' }}  href="https://maind.supsi.ch">インタラクションデザインMA SUPSIのウェブサイト。</a>をご覧ください。</p>
+                <p>L'immagine è stata caricata correttamente e verrà presto visualizzata nell'installazione.<br/>Mentre aspetti, puoi esplorare il <a style={{ color: 'white' }}  href="https://maind.supsi.ch">sito web del Master of Arts in Interaction Design SUPSI</a>.</p>
                 <p style={{ fontSize: '0.9em', marginTop: '15px', color: '#ccc' }}>
-                Please be aware that every generation consumes energy, so please use this facility responsibly.<br/>すべての世代がエネルギーを消費していることを認識し、責任を持ってこの施設をご利用ください。
+                Please be aware that every generation consumes energy, so please use this tool responsibly.<br/>Si prega di tenere presente che ogni generazione consuma energia, quindi si prega di utilizzare questo strumento in modo responsabile.
                 </p>
             </div>
         )}

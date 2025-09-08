@@ -184,7 +184,7 @@ export default function Gallery() {
       <p
           style={{
             fontFamily: 'Helvetica, sans-serif',
-            fontSize: '12px',
+            fontSize: '20px',
             color: 'white',
             width: '95%',
             textAlign: 'left'
