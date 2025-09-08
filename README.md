@@ -90,6 +90,14 @@ As previously stated, the project is released under the terms of the [CC BY](htt
 ## Acknowledgments
 The project has been developed thanks to the support of the University of Applied Sciences and Arts of Southern Switzerland.
 
+## ToDo List
+The following tasks are connected on changing the method to list images to be shown on gallery, in fact the actual system cost many credits, and is not efficient.
+- [ ] Update upload/generation flow to write sentinel blob `generated/_version.txt` on new outputs
+- [ ] Create `/api/blob-version` that HEADs sentinel and returns `{ uploadedAt }`
+- [ ] Modify gallery to poll version endpoint and fetch `/api/filelist` only on change
+- [ ] Document sentinel/version mechanism and rollback plan in `Wiki`
+
+
 <img src="documentation/images/supsi-logo.svg" width="200" />
 
 The project has been showcased during the 2024 [EXPOSED](https://www.exposed.photography/) festival in Turin at the [Recontemporary club](https://recontemporary.com/en/). 
