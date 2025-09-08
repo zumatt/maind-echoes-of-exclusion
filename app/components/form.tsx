@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const installationOnline = false;
+const installationOnline = true;
 
 export default function UploadForm() {
   const [file, setFile] = useState<File | null>(null);
