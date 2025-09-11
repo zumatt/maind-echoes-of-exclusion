@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   const input = {
     image: imageUrl,
     prompt: 'Describe this image with a short but precise description.',
-    max_tokens: 200,
+    max_tokens: 60,
   };
 
   const prediction = await replicate.predictions.create({
