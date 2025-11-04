@@ -1,0 +1,56 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Echoes of exclusion
+message: please cite this work as follows
+type: software
+authors:
+  - given-names: Matteo
+    family-names: Subet
+    email: matteo.subet@supsi.ch
+    affiliation: >-
+      University of Applied Sciences and Arts of Southern
+      Switzerland
+    orcid: 'https://orcid.org/0009-0003-4769-9568'
+  - given-names: Amina Fatou
+    family-names: Cissè
+    affiliation: >-
+      University of Applied Sciences and Arts of Southern
+      Switzerland
+  - given-names: Cathrine
+    family-names: Hansen
+    affiliation: >-
+      University of Applied Sciences and Arts of Southern
+      Switzerland
+  - given-names: Hanna
+    family-names: Kastrytsa
+    affiliation: >-
+      University of Applied Sciences and Arts of Southern
+      Switzerland
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17151040
+repository-code: 'https://github.com/zumatt/maind-echoes-of-exclusion'
+url: 'https://maind-echoes-of-exclusion.vercel.app/'
+abstract: >-
+  The project wants to explore different Generative AI
+  systems in order to find specific patterns within the
+  machine thoughs. Specifically, the installation let the
+  user to explore image description, image generation and
+  voice cloning through different Generative AI models such
+  as LLaVa v1.6 Large Language and Vision Assistant, that
+  uses Mistral 7B LLM for answering, FLUX.1 [dev] 12B Image
+  generator, and Coqui XTTS-v2 Multilingual Text To Speech
+  Voice Cloning.
+keywords:
+  - interactive installation
+  - artificial intelligence
+  - vercel
+  - generative AI
+  - generative AI project
+  - AI installation
+license: CC-BY-4.0
+commit: 8ec840a
+version: '2.0'
+date-released: '2025-09-18'
